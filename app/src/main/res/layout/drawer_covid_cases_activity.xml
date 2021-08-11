@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/content"
+        android:background="@drawable/desing_all_top_corner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:paddingBottom="20dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:id="@+id/vIndicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <View
+                    android:layout_width="40dp"
+                    android:layout_height="1dp"
+                    android:background="@color/white" />
+                <View
+                    android:layout_width="40dp"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="2dp"
+                    android:background="@color/solitude_1" />
+            </LinearLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/cl_countryIndonesia"
+                android:layout_marginTop="25dp"
+                android:layout_marginLeft="30dp"
+                app:layout_constraintTop_toBottomOf="@id/vIndicator"
+                app:layout_constraintLeft_toLeftOf="parent">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:id="@+id/iv_indonesia"
+                    android:src="@drawable/ic_indonesia"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Indonesia"
+                    android:letterSpacing="0.03"
+                    android:textColor="@color/white"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toRightOf="@id/iv_indonesia"
+                    android:layout_marginLeft="15dp"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/cl_hospital_search"
+                android:layout_marginTop="20dp"
+                android:paddingLeft="22dp"
+                android:paddingRight="10dp"
+                app:layout_constraintTop_toBottomOf="@id/cl_countryIndonesia"
+                android:layout_marginHorizontal="20dp"
+                android:background="@drawable/design_all_around_corner">
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:src="@drawable/ic_search_white"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cari Rumah Sakit"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    style="@style/Font.Reguler.14"
+                    android:letterSpacing="0.05"
+                    android:textColor="@color/quantum_grey"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
+                android:id="@+id/cl_total_cases"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="20dp"
+                android:background="@drawable/design_all_around_corner"
+                app:layout_constraintTop_toBottomOf="@id/cl_hospital_search"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_total_cases_title"
+                    android:text="@string/konfirmasi_kasus_positif"
+                    android:fontFamily="@font/roboto_medium"
+                    android:textSize="24sp"
+                    android:textColor="@color/white"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"/>
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:id="@+id/iv_check"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:src="@drawable/ic_corona_virus"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_total_cases"
+                    android:textColor="@color/pastel_red"
+                    style="@style/Font.Bold.30"
+                    android:text="2000000"
+                    android:letterSpacing="0.03"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="12dp"
+                    android:text="Penambahan Hari ini :"
+                    android:textStyle="italic"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toStartOf="@id/tv_daily_increment"
+                    app:layout_constraintTop_toBottomOf="@id/tv_total_cases"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_daily_increment"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:letterSpacing="0.05"
+                    android:textColor="@color/pastel_red"
+                    app:layout_constraintTop_toBottomOf="@id/tv_total_cases"
+                    android:text="+ 2.000"
+                    android:textStyle="italic"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
+                android:id="@+id/cl_total_cases_negative"
+                android:paddingHorizontal="20dp"
+                android:layout_marginBottom="30dp"
+                android:paddingVertical="20dp"
+                android:background="@drawable/design_all_around_corner"
+                app:layout_constraintTop_toBottomOf="@id/cl_total_cases"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_total_cases_dead_title"
+                    android:text="@string/konfirmasi_kasus_negatif"
+                    android:fontFamily="@font/roboto_medium"
+                    android:textSize="24sp"
+                    android:textColor="@color/white"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"/>
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:id="@+id/iv_dead"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:src="@drawable/ic_check"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_total_cured"
+                    android:textColor="@color/teal_200"
+                    style="@style/Font.Bold.30"
+                    android:text="2000000"
+                    android:letterSpacing="0.03"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="12dp"
+                    android:text="Penambahan Hari ini :"
+                    android:textStyle="italic"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toStartOf="@id/tv_daily_increment_cured"
+                    app:layout_constraintTop_toBottomOf="@id/tv_total_cured"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_daily_increment_cured"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:letterSpacing="0.05"
+                    android:textColor="@color/teal_200"
+                    app:layout_constraintTop_toBottomOf="@id/tv_total_cured"
+                    android:text="+ 2.000"
+                    android:textStyle="italic"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="450dp"
+                android:id="@+id/cl_linechart_data_pandemi"
+                app:layout_constraintTop_toBottomOf="@id/cl_total_cases_negative"
+                android:layout_marginTop="20dp"
+                android:layout_marginHorizontal="20dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:paddingHorizontal="10dp"
+                app:layout_constraintRight_toRightOf="parent"
+                android:background="@drawable/design_all_around_corner">
+                <com.github.aachartmodel.aainfographics.aachartcreator.AAChartView
+                    android:id="@+id/aa_chart_view"
+                    android:layout_width="match_parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:layout_height="400dp">
+
+                </com.github.aachartmodel.aainfographics.aachartcreator.AAChartView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                app:layout_constraintTop_toBottomOf="@id/cl_linechart_data_pandemi"
+                android:layout_marginTop="20dp"
+                android:layout_marginHorizontal="20dp"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="15dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:background="@drawable/design_all_around_corner">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:id="@+id/tv_vaksinasi_title"
+                    style="@style/Font.Reguler.18"
+                    android:letterSpacing="0.03"
+                    android:textColor="@color/white"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:text="Vaksinasi Indonesia"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/tv_vaksinasi_title"
+                    android:layout_marginTop="5dp"
+                    android:id="@+id/tv_lastUpdate_vaksinasi"
+                    android:text="@string/terakhir_update_vaksin"
+                    style="@style/Font.Reguler.12"
+                    android:textColor="@color/white"
+                    android:textStyle="italic"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"/>
+                <com.ramijemli.percentagechartview.PercentageChartView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:id="@+id/pv_vaksinasi1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/pv_vaksinasi2"
+                    app:layout_constraintTop_toBottomOf="@id/tv_lastUpdate_vaksinasi"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:pcv_progress="45"
+                    app:pcv_animDuration="800"
+                    app:pcv_startAngle="90"
+                    app:pcv_progressBarThickness="2dp"
+                    app:pcv_mode="ring"/>
+                <com.ramijemli.percentagechartview.PercentageChartView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:id="@+id/pv_vaksinasi2"
+                    app:layout_constraintStart_toEndOf="@id/pv_vaksinasi1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_lastUpdate_vaksinasi"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:pcv_progress="45"
+                    app:pcv_animDuration="800"
+                    app:pcv_startAngle="90"
+                    app:pcv_progressBarThickness="2dp"
+                    app:pcv_mode="ring"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_vaksinasi1"
+                    android:text="@string/vaksinasi_1"
+                    style="@style/Font.Reguler.12"
+                    android:textColor="@color/white"
+                    app:layout_constraintTop_toBottomOf="@id/pv_vaksinasi1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/tv_vaksinasi2"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_vaksinasi2"
+                    android:text="@string/vaksinasi_2"
+                    style="@style/Font.Reguler.12"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/pv_vaksinasi2"
+                    app:layout_constraintStart_toEndOf="@id/tv_vaksinasi1"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

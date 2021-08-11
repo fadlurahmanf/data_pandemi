@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".ui.MainActivity">
+    
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <fragment
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/mapfragment"
+            android:name="com.google.android.gms.maps.SupportMapFragment"/>
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/iv_world"
+            android:src="@drawable/iv_world"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <FrameLayout
+        android:id="@+id/sheet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+        <include android:id="@+id/drawer"
+            layout="@layout/drawer_covid_cases_activity"/>
+
+    </FrameLayout>
+
+<!--    <fragment-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:id="@+id/mapfragment"-->
+<!--        android:name="com.google.android.gms.maps.SupportMapFragment"/>-->
+<!--    <FrameLayout-->
+<!--        android:id="@+id/sheet"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">-->
+<!--        <include android:id="@+id/drawer"-->
+<!--            layout="@layout/drawer_covid_cases_activity"/>-->
+
+<!--    </FrameLayout>-->
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

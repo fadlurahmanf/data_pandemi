@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Data Pandemi</string>
+    <string name="konfirmasi_kasus_positif">Konfirmasi Kasus Positif</string>
+    <string name="konfirmasi_kasus_sembuh">Konfirmasi Kasus Sembuh</string>
+    <string name="konfirmasi_kasus_negatif">Konfirmasi Kasus Negatif</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="terakhir_update_vaksin">Terakhir di update tanggal : %1$s</string>
+    <string name="vaksinasi_1">Vaksinasi 1</string>
+    <string name="vaksinasi_2">Vaksinasi 2</string>
+    <string name="cari_rumah_sakit">Cari Rumah Sakit</string>
+    <string name="cari_provinsi">Cari Provinsi</string>
+    <string name="provinsi">Provinsi</string>
+    <string name="kota">Kota</string>
+    <string name="cari_kota">Cari Kota</string>
+    <string name="rumah_sakit">Rumah Sakit</string>
+    <string name="ketersediaan_kasur">Ketersediaan Kasur</string>
+    <string name="jumlah_antrian">Jumlah Antrian</string>
+    <string name="total">Total</string>
+    <string name="total_keseluruhan">Total Keseluruhan</string>
+    <string name="berdasarkan_gender">Berdasarkan Gender</string>
+    <string name="konfirmasi_kasus_meninggal">Konfirmasi Kasus Meninggal</string>
+</resources>

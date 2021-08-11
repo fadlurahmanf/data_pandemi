@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/pastel_black"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    tools:context=".ui.hospital.hospital.SearchHospitalActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textAlignment="center"
+        android:text="@string/kota"
+        android:id="@+id/title_cari_rumah_sakit"
+        android:textAllCaps="true"
+        style="@style/Font.Bold.25"
+        android:textColor="@color/white"
+        android:letterSpacing="0.07"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:id="@+id/vIndicator"
+        app:layout_constraintTop_toBottomOf="@id/title_cari_rumah_sakit"
+        android:background="@color/white"
+        android:layout_marginTop="5dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_inputSearchHospital"
+        android:background="@drawable/design_all_around_corner"
+        android:hint="@string/cari_rumah_sakit"
+        android:textColor="@color/white"
+        android:paddingLeft="25dp"
+        android:paddingRight="10dp"
+        style="@style/Font.Reguler.16"
+        android:layout_marginTop="20dp"
+        android:letterSpacing="0.05"
+        android:drawableEnd="@drawable/ic_search_white"
+        android:paddingVertical="13dp"
+        android:textColorHint="@color/quantum_grey"
+        app:layout_constraintTop_toBottomOf="@id/vIndicator"
+        android:layout_marginHorizontal="20dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/rv_hospital"
+        android:layout_marginTop="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_inputSearchHospital"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:listitem="@layout/item_hospital"
+        android:layout_marginHorizontal="20dp"/>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lottie_loading"
+        app:layout_constraintTop_toBottomOf="@id/et_inputSearchHospital"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:visibility="gone"
+        app:lottie_rawRes="@raw/loading_two_ball"
+        app:lottie_loop="true"
+        app:lottie_autoPlay="true"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

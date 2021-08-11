@@ -1,0 +1,13 @@
+package com.fadlurahmanf.datapandemi.params
+
+object Params {
+    const val GROUP_ITEM_PROVINSI = "GROUP_ITEM_PROVINSI"
+
+    const val ITEM_PROVINSI = "ITEM_INTENT_PROVINSI"
+
+    const val ITEM_INTENT_SEARCH_HOSPITAL = "ITEM_INTENT_SEARCH_HOSPITAL"
+
+    const val INTENT_COUNTRY_NAME = "INTENT_COUNTRY_NAME"
+    const val INTENT_CASE_CONFIRMED = "INTENT_CASE_CONFIRMED"
+    const val INTENT_CASE_DEATH = "INTENT_CASE_DEATH"
+}

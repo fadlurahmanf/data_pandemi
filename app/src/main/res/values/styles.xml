@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Font">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="Font.Bold">
+        <item name="fontFamily">@font/roboto_bold</item>
+    </style>
+    <style name="Font.Reguler">
+        <item name="fontFamily">@font/roboto_medium</item>
+    </style>
+    <style name="Font.Bold.24">
+        <item name="android:textSize">24sp</item>
+    </style>
+    <style name="Font.Bold.25">
+        <item name="android:textSize">25sp</item>
+    </style>
+    <style name="Font.Bold.20">
+        <item name="android:textSize">20sp</item>
+    </style>
+    <style name="Font.Bold.30">
+        <item name="android:textSize">30sp</item>
+    </style>
+    <style name="Font.Bold.34">
+        <item name="android:textSize">34sp</item>
+    </style>
+    <style name="Font.Reguler.18">
+        <item name="android:textSize">18sp</item>
+    </style>
+    <style name="Font.Reguler.16">
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name="Font.Reguler.14">
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="Font.Reguler.12">
+        <item name="android:textSize">12sp</item>
+    </style>
+    <style name="Font.Reguler.10">
+        <item name="android:textSize">10sp</item>
+    </style>
+</resources>
