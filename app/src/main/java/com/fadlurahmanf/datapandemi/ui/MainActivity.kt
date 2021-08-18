@@ -32,7 +32,7 @@ import com.google.maps.android.clustering.ClusterManager
 import dagger.android.AndroidInjection
 import javax.inject.Inject
 
-
+//TESTING
 class MainActivity : BaseMvvmActivity() {
     private lateinit var binding:ActivityMainBinding
     private lateinit var viewModel: MainViewModel
