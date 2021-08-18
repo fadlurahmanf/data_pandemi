@@ -16,6 +16,7 @@ import com.fadlurahmanf.datapandemi.data.repo.ProvinceRepository
 import com.fadlurahmanf.datapandemi.data.response.province.GetProvinceIdResponse
 import com.fadlurahmanf.datapandemi.databinding.ActivitySearchProvinceHospitalBinding
 import com.fadlurahmanf.datapandemi.extenson.AnimationSet
+import com.fadlurahmanf.datapandemi.extenson.DataDummy
 import com.fadlurahmanf.datapandemi.ui.hospital.city.SearchCityHospitalActivity
 import dagger.android.AndroidInjection
 import org.jetbrains.anko.startActivity
@@ -112,6 +113,9 @@ class SearchProvinceHospitalActivity : BaseMvvmActivity(), OnItemProvinceClickCa
             idProvince = data?.id?:"",
             nameProvince = data?.nameProvince?:""
         )
+        intentRepo.dataDummy = DataDummy()
+        intentRepo.dataDummy?.data1 = "INI DATA KE 1"
+        println("MASUK SEARCH PROVINCE ${intentRepo.dataDummy?.toString()}")
         SearchCityHospitalActivity.newInstance(this)
     }
 

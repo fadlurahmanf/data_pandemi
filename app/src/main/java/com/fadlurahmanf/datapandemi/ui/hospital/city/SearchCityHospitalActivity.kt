@@ -108,6 +108,11 @@ class SearchCityHospitalActivity : BaseMvvmActivity(), OnItemCityClickCallback {
             idCity = city.id?:"",
             cityName = city.name?:""
         )
+        intentRepo.dataDummy?.data2 = "INI DATA KE DUA"
+        println("MASUK SEARCH CITY ${intentRepo.dataDummy?.toString()}")
+
+        intentRepo.nullDataDummy()
+        println(intentRepo.dataDummy?.toString())
     }
 
 }

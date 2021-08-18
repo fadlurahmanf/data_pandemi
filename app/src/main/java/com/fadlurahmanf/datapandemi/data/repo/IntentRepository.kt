@@ -4,6 +4,7 @@ import android.content.Context
 import com.fadlurahmanf.datapandemi.base.AbstractPreference
 import com.fadlurahmanf.datapandemi.data.DataProvinsi
 import com.fadlurahmanf.datapandemi.data.SearchHospitalIntentData
+import com.fadlurahmanf.datapandemi.extenson.DataDummy
 import com.fadlurahmanf.datapandemi.params.Params
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -30,11 +31,19 @@ class IntentRepository @Inject constructor(var context: Context):AbstractPrefere
             field = getContent(Params.ITEM_INTENT_SEARCH_HOSPITAL, SearchHospitalIntentData::class.java)
             return field
         }set(value) {
-        field=value
-        editContent(Params.ITEM_INTENT_SEARCH_HOSPITAL, value)
+            field=value
+            editContent(Params.ITEM_INTENT_SEARCH_HOSPITAL, value)
+        }
+
+    //data dummy
+    var dataDummy:DataDummy ? = null
+
+    fun nullDataDummy(){
+        dataDummy = null
     }
 
     fun persist(){
         searchHospitalIntentData = searchHospitalIntentData
+        dataDummy = dataDummy
     }
 }

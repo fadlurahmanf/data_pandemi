@@ -47,3 +47,8 @@ class DummyProvinsi {
         return list
     }
 }
+
+data class DataDummy (
+    var data1:String?="",
+    var data2:String?=""
+        )
