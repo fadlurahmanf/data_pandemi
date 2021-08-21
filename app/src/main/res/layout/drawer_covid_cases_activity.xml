@@ -263,6 +263,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="220dp"
+                android:id="@+id/cl_vaksinasi"
                 app:layout_constraintTop_toBottomOf="@id/cl_linechart_data_pandemi"
                 android:layout_marginTop="20dp"
                 android:layout_marginHorizontal="20dp"
@@ -342,6 +343,22 @@
                     app:layout_constraintTop_toBottomOf="@id/pv_vaksinasi2"
                     app:layout_constraintStart_toEndOf="@id/tv_vaksinasi1"/>
 
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="20dp"
+                android:id="@+id/newChart"
+                android:paddingVertical="20dp"
+                app:layout_constraintTop_toBottomOf="@id/cl_vaksinasi">
+                <com.github.mikephil.charting.charts.LineChart
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:background="@color/black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:id="@+id/lineChart"
+                    app:layout_constraintTop_toTopOf="parent"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

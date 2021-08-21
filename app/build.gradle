@@ -87,4 +87,7 @@ dependencies {
     implementation 'com.ramijemli.percentagechartview:percentagechartview:0.3.0'
     //lottie animation
     implementation 'com.airbnb.android:lottie:3.7.0'
+
+    //mpachart libr
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 }

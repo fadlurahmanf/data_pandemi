@@ -22,3 +22,12 @@ fun String.convertBulanAngkaKeNama():String{
     else namaBulan = "Desember"
     return namaBulan
 }
+
+//[2021-08-01] -> FORMAT
+fun String.convertCompletedDateToMonthAndDay():String{
+    var completeDate:String = this.toString()
+    var splitCompleteDate = completeDate.split("-")
+    var month = splitCompleteDate[1].toInt().toString().convertBulanAngkaKeNama()
+    var day = splitCompleteDate.last().toInt().toString()
+    return "${day} ${month}"
+}
