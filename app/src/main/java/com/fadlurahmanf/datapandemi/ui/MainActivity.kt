@@ -1,12 +1,16 @@
 package com.fadlurahmanf.datapandemi.ui
 
 
+import android.content.Context
+import android.content.pm.ApplicationInfo
+import android.content.pm.PackageManager
 import android.graphics.Color
-import android.util.Log
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.fadlurahmanf.datapandemi.BuildConfig
 import com.fadlurahmanf.datapandemi.R
 import com.fadlurahmanf.datapandemi.ViewModelFactory
 import com.fadlurahmanf.datapandemi.api.ServicePemerintah
@@ -22,16 +26,15 @@ import com.fadlurahmanf.datapandemi.ui.hospital.province.SearchProvinceHospitalA
 import com.fadlurahmanf.datapandemi.ui.provinsi.ProvinsiActivity
 import com.fadlurahmanf.datapandemi.ui.world.WorldActivity
 import com.github.aachartmodel.aainfographics.aachartcreator.*
-import com.github.mikephil.charting.components.AxisBase
-import com.github.mikephil.charting.components.Legend
+import com.github.mikephil.charting.components.MarkerView
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
-import com.github.mikephil.charting.formatter.IAxisValueFormatter
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
-import com.github.mikephil.charting.formatter.ValueFormatter
+import com.github.mikephil.charting.highlight.Highlight
+import com.github.mikephil.charting.utils.MPPointF
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -41,8 +44,6 @@ import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.maps.android.clustering.ClusterManager
 import dagger.android.AndroidInjection
-import java.sql.Timestamp
-import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
 import kotlin.collections.ArrayList
@@ -80,6 +81,12 @@ class MainActivity : BaseMvvmActivity() {
     private fun initAction() {
         binding.ivWorld.setOnClickListener {
             WorldActivity.newInstance(this)
+        }
+        binding.drawer.clVaksinasi.setOnClickListener {
+            val ai: ApplicationInfo = applicationContext.packageManager
+                .getApplicationInfo(applicationContext.packageName, PackageManager.GET_META_DATA)
+            val value = ai.metaData["API_KEY_2"]
+            Toast.makeText(this, value.toString(), Toast.LENGTH_LONG).show()
         }
     }
 
@@ -169,6 +176,7 @@ class MainActivity : BaseMvvmActivity() {
             binding.drawer.tvDailyIncrementCured.text = "+ ${it.updateToday.penambahan.jumlah_sembuh.toString().tigaAngkaBelakangKoma()}"
             setupGraphicChart(it)
             setupNewLineChart(it)
+//            setupNewLineChart2()
         })
 
         viewModel.dataPerProvinsi.observe(this, Observer {
@@ -240,7 +248,7 @@ class MainActivity : BaseMvvmActivity() {
         var x:Int = 0
         for (i in 0 until it?.updateToday?.listharian?.size!!){
             if (i%5==0){
-                listSembuh.add(Entry(i.toFloat(), it.updateToday.listharian[i].jumlahSembuh.value.toFloat()))
+                listSembuh.add(Entry(x.toFloat(), it.updateToday.listharian[i].jumlahSembuh.value.toFloat()))
                 listSembuhLabel.add(it.updateToday.listharian[i].keyAsString.split("T")[0])
                 x++
             }
@@ -248,78 +256,53 @@ class MainActivity : BaseMvvmActivity() {
 
         val sembuhDataSet = LineDataSet(listSembuh, "Sembuh")
         sembuhDataSet.setDrawCircles(false)
+        sembuhDataSet.valueTextColor = ContextCompat.getColor(this, R.color.white)
+        sembuhDataSet.highLightColor = ContextCompat.getColor(this, R.color.teal_200)
+
+        var yAxisL= binding.drawer.lineChart.getAxis(YAxis.AxisDependency.LEFT)
+        yAxisL.setDrawGridLines(true)
+        yAxisL.enableGridDashedLine(5f, 5f, 5f)
+        yAxisL.textColor = ContextCompat.getColor(this, R.color.white)
+        yAxisL.axisMaximum = 45000f
+        val yAxisR = binding.drawer.lineChart.getAxis(YAxis.AxisDependency.RIGHT)
+        yAxisR.setDrawGridLines(false)
+        yAxisR.isEnabled = false
         val xAxis = binding.drawer.lineChart.xAxis
         xAxis.textColor = ContextCompat.getColor(this, R.color.white)
         xAxis.setDrawGridLines(false)
+        xAxis.labelCount = 2
         xAxis.position = XAxis.XAxisPosition.BOTTOM
-//        xAxis.valueFormatter = newAxisFormatter(listSembuhLabel)
+        xAxis.valueFormatter = newAxisFormatter(listSembuhLabel)
         binding.drawer.lineChart.data = LineData(sembuhDataSet)
+        binding.drawer.lineChart.setScaleEnabled(false)
+        var marker = customMarkerView(this, R.layout.custom_markerview_linechart)
+        binding.drawer.lineChart.marker = marker
         binding.drawer.lineChart.invalidate()
 
-
-        binding.drawer.clVaksinasi.setOnClickListener { view->
-           listSembuh.forEach {
-               println("${it.x} dan ${it.y}")
-           }
-        }
     }
 
-    private fun setupNewLineChart2() {
-        val listSembuh:ArrayList<Entry> = arrayListOf()
-        listSembuh.add(Entry(0f, 2000f))
-        listSembuh.add(Entry(1f, 2320f))
-        listSembuh.add(Entry(2f, 1020f))
-        listSembuh.add(Entry(3f, 1030f))
-        listSembuh.add(Entry(4f, 2120f))
-        listSembuh.add(Entry(5f, 2020f))
-        listSembuh.add(Entry(6f, 320f))
-        listSembuh.add(Entry(7f, 1420f))
-        listSembuh.add(Entry(8f, 530f))
-        listSembuh.add(Entry(9f, 3045f))
-
-        val xLabel:ArrayList<String> = arrayListOf()
-        xLabel.add("2020-04-05")
-        xLabel.add("2020-04-06")
-        xLabel.add("2020-04-07")
-        xLabel.add("2020-04-08")
-        xLabel.add("2020-04-09")
-        xLabel.add("2020-04-10")
-        xLabel.add("2020-04-11")
-        xLabel.add("2020-04-12")
-        xLabel.add("2020-04-13")
-        xLabel.add("2020-04-14")
-
-        val sembuhDataset = LineDataSet(listSembuh, "SEMBUH")
-        sembuhDataset.setDrawFilled(true)
-        sembuhDataset.fillDrawable = ContextCompat.getDrawable(this, R.drawable.drawfill_linechart_gradient)
-        sembuhDataset.setDrawCircles(false)
-        sembuhDataset.setDrawCircleHole(false)
-        sembuhDataset.setCircleColor(Color.BLACK)
-        sembuhDataset.color = ContextCompat.getColor(this, R.color.black)
-        sembuhDataset.setDrawValues(false)
-
-        binding.drawer.lineChart.setScaleEnabled(false)
-        binding.drawer.lineChart.description.text = ""
-        binding.drawer.lineChart.setDrawMarkerViews(false)
-        val yAxis = binding.drawer.lineChart.getAxis(YAxis.AxisDependency.LEFT)
-        yAxis.setDrawGridLines(false)
-        yAxis.textColor = ContextCompat.getColor(this, R.color.white)
-        val xAxis = binding.drawer.lineChart.xAxis
-        xAxis.textColor = ContextCompat.getColor(this, R.color.white)
-        xAxis.setDrawGridLines(false)
-        xAxis.position = XAxis.XAxisPosition.BOTTOM
-        xAxis.labelCount = 3
-        xAxis.valueFormatter = newAxisFormatter(xLabel)
-        binding.drawer.lineChart.data = LineData(sembuhDataset)
-        binding.drawer.lineChart.invalidate()
+    private inner class customMarkerView(context:Context, layoutResource:Int): MarkerView(context, layoutResource) {
+        private lateinit var text1:TextView
+        init {
+            text1 = findViewById(R.id.cobacoba)
+        }
+        override fun refreshContent(e: Entry?, highlight: Highlight?) {
+            val value = e?.y?.toInt()
+            text1.text = value.toString()
+            super.refreshContent(e, highlight)
+        }
+        override fun getOffsetForDrawingAtPoint(xpos: Float, ypos: Float): MPPointF {
+            return MPPointF(-width / 2f, -height - 10f)
+        }
     }
 
     private fun newAxisFormatter(listDate:ArrayList<String>):IndexAxisValueFormatter{
         val formatter: IndexAxisValueFormatter = object : IndexAxisValueFormatter() {
             override fun getFormattedValue(value: Float): String {
+                println("MASUK ${listDate.size}")
                 var position = (value).toInt()
-                var newFormattedDate = "${listDate[position]}".convertCompletedDateToMonthAndDay()
-                return "${newFormattedDate}"
+                val newFormattedDate = listDate[position].convertCompletedDateToMonthAndYear()
+                return newFormattedDate
             }
         }
         return formatter

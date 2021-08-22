@@ -29,5 +29,12 @@ fun String.convertCompletedDateToMonthAndDay():String{
     var splitCompleteDate = completeDate.split("-")
     var month = splitCompleteDate[1].toInt().toString().convertBulanAngkaKeNama()
     var day = splitCompleteDate.last().toInt().toString()
-    return "${day} ${month}"
+    return "${day} ${month}" // Format 15 Juli
+}
+
+fun String.convertCompletedDateToMonthAndYear():String{
+    var completeDate = this.toString()
+    var splitCompleteDate = completeDate.split("-")
+    var month = splitCompleteDate[1].toInt().toString().convertBulanAngkaKeNama()
+    return "${month} ${splitCompleteDate.first()}"
 }
